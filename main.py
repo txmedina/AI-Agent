@@ -22,7 +22,7 @@ class AssistantResponse(BaseModel):
     topic: str
     summary: str
     # sources: list[str]   for web search services 
-    # tools_used: list[str]   tools that are used in search
+    # tools_used: list[str]
 
 llm = ChatOpenAI(model_name="gpt-4o")
 # llm2 = ChatAnthropic(<insert claude or other model here>)
@@ -57,10 +57,7 @@ agent = create_tool_calling_agent(
 
 # need for execution of agent
 agent_executor = AgentExecutor(agent=agent, tools=tools, verbose=True) # true = see process of Agent
-query = input("How may I help you? ")
-response = agent_executor.invoke({"query": query})
-print(response)
-
+parser = parser
 # parses information from class
 #
 #try:
